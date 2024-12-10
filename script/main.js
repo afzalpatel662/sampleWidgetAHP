@@ -5,6 +5,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 			widgetDataSelected: {},
 	
 			onLoad: function() { 
+                console.log("widget loaded");
                 //widget.body.innerHTML = "Hello Afzal"
                 // Create a dropbox for drag-and-drop functionality
 				var dropbox = widget.createElement('div', { 'class' : 'mydropclass', 'text' : '' });
@@ -26,6 +27,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				DataDragAndDrop.droppable(theInput, {
 					drop: function(input) {
                         alert(input);
+                        
                     }
                 })
 
