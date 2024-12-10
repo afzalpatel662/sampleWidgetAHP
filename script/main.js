@@ -22,6 +22,13 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				widget.body.innerHTML="";
 				dropbox.inject(widget.body);
 				//
+                var theInput = widget.body.querySelector('.mydropclass');
+				DataDragAndDrop.droppable(theInput, {
+					drop: function(input) {
+                        alert(input);
+                    }
+                })
+
             }
 				
 		};
