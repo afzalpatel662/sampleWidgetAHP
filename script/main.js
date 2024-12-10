@@ -31,11 +31,12 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
                         
                     }
                 })
-				console.log("hello afzal 2");
+				console.log("hello afzal 3");
 				var headersep = widget.createElement('div', { 'class' : 'headersep'});
 				headersep.style= "font-size: 20px; color: #001100; text-align: center";
 				headersep.innerHTML = "<p> 	My first widget </p>"
-
+				var testsep = widget.createElement('div', { 'class' : 'testsep', 'text' : 'My first' });
+				
             }
 				
 		};
