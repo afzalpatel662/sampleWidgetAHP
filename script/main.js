@@ -32,9 +32,15 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
                     }
                 })
 
+				var headersep = widget.createElement('H6', { 'class' : 'headersep', 'text' : 'My first widget' });
+				headersep.style= "font-size: 20px; color: #001100; text-align: center";
+
             }
 				
 		};
+
+		
+
 		widget.addEvent('onLoad', comWidget.onLoad);
 		widget.addEvent('onRefresh', comWidget.onLoad);
 	});
