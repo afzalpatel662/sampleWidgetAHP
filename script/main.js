@@ -28,6 +28,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				headersep.innerHTML = "<p> 	My first widget </p>"
 				var testsep = widget.createElement('div', { 'class' : 'testsep', 'text' : 'My first' });
 				testsep.inject(widget.body);
+				headersep.inject(widget.body);
 
 				//
                 var theInput = widget.body.querySelector('.mydropclass');
@@ -38,7 +39,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
                         
                     }
                 })
-				console.log("hello afzal 5");
+				console.log("hello afzal 6");
 				
             }
 				
