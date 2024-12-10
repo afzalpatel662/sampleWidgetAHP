@@ -22,6 +22,13 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				dropbox.style = "border:2px #c6c5c5 dashed; margin:10px; padding: 5%; text-align: center";
 				widget.body.innerHTML="";
 				dropbox.inject(widget.body);
+
+				var headersep = widget.createElement('div', { 'class' : 'headersep'});
+				headersep.style= "font-size: 20px; color: #001100; text-align: center";
+				headersep.innerHTML = "<p> 	My first widget </p>"
+				var testsep = widget.createElement('div', { 'class' : 'testsep', 'text' : 'My first' });
+				testsep.inject(widget.body);
+
 				//
                 var theInput = widget.body.querySelector('.mydropclass');
 				DataDragAndDrop.droppable(theInput, {
@@ -31,11 +38,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
                         
                     }
                 })
-				console.log("hello afzal 3");
-				var headersep = widget.createElement('div', { 'class' : 'headersep'});
-				headersep.style= "font-size: 20px; color: #001100; text-align: center";
-				headersep.innerHTML = "<p> 	My first widget </p>"
-				var testsep = widget.createElement('div', { 'class' : 'testsep', 'text' : 'My first' });
+				console.log("hello afzal 5");
 				
             }
 				
