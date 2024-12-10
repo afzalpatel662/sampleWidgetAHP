@@ -27,6 +27,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				DataDragAndDrop.droppable(theInput, {
 					drop: function(input) {
                         alert(input);
+						alert("test");
                         
                     }
                 })
