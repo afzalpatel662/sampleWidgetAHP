@@ -39,10 +39,79 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
                         
                     }
                 })
-				console.log("hello afzal 6");
-				
-            }
-				
+				console.log("hello afzal 8");
+				comWidget.setBaseURL();
+				setTimeout(() => {
+					comWidget.setCSRF();
+					comWidget.setSecurityContext();
+				}, 1000);
+            },
+			setBaseURL: function() 
+			{
+				BaseUrl.getServiceUrl({ 
+				serviceName: '3DSpace', 
+				platformId:  widget.getValue('x3dPlatformId'),
+				onComplete :  function (URLResult) {
+					console.log("base url set");
+					widget.setValue("urlBASE", URLResult+"/");
+				},
+				onFailure:  function( ) { alert("Something Went Wrong");
+				}
+				}); 
+			},
+
+			setCSRF: function() {
+				// Web Service call to get the crsf token (security) for the current session
+				let urlWAF = widget.getValue("urlBASE")+"resources/v1/application/CSRF";
+				let dataWAF = {
+				};
+				let headerWAF = {
+				};
+				let methodWAF = "GET";
+				let dataResp=WAFData.authenticatedRequest(urlWAF, {
+					method: methodWAF,
+					headers: headerWAF,
+					data: dataWAF,
+					type: "json",
+					async : false,
+					onComplete: function(dataResp) {
+						// Save the CSRF token to a hidden widget property so it can be recalled
+						console.log("csrf token set");
+						let csrfArr=dataResp["csrf"];
+						widget.setValue("csrfToken", csrfArr["value"]);
+					},
+					onFailure: function(error) {
+						widget.body.innerHTML += "<p>Something Went Wrong- "+error+"</p>";
+						widget.body.innerHTML += "<p>" + JSON.stringify(error) + "</p>";
+					}
+				});
+			},
+
+			setSecurityContext: function() {
+				// Web Service call to get the security context for the login person
+				let urlWAF = widget.getValue("urlBASE")+"/resources/modeler/pno/person/?current=true&select=preferredcredentials&select=collabspaces";
+				let dataWAF = {
+				};
+				let headerWAF = {
+				};
+				let methodWAF = "GET";
+				let dataResp=WAFData.authenticatedRequest(urlWAF, {
+					method: methodWAF,
+					headers: headerWAF,
+					data: dataWAF,
+					type: "json",
+					async : false,
+					onComplete: function(dataResp) {
+						console.log("security context is---"+dataResp);
+						comWidget.credentialDataParser(dataResp);
+					},
+					onFailure: function(error) {
+						widget.body.innerHTML += "<p>Something Went Wrong- "+error+"</p>";
+						widget.body.innerHTML += "<p>" + JSON.stringify(error) + "</p>";
+					}
+				});
+			}
+					
 		};
 
 		
