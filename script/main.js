@@ -39,14 +39,14 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
                         
                     }
                 })
-				/*
+				
 				console.log("hello afzal 8");
 				comWidget.setBaseURL();
 				setTimeout(() => {
 					comWidget.setCSRF();
 					comWidget.setSecurityContext();
 				}, 1000);
-				*/
+				
             },
 			setBaseURL: function() 
 			{
