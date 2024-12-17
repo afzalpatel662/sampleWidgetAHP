@@ -25,7 +25,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 				var headersep = widget.createElement('div', { 'class' : 'headersep'});
 				headersep.style= "font-size: 20px; color: #001100; text-align: center";
-				headersep.innerHTML = "<p> 	My first widget </p>"
+				headersep.innerHTML = "<p> 	My first widget 2 </p>"
 				var testsep = widget.createElement('div', { 'class' : 'testsep', 'text' : 'My first' });
 				testsep.inject(widget.body);
 				headersep.inject(widget.body);
@@ -47,7 +47,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					comWidget.setSecurityContext();
 				}, 1000);
 				*/
-            },
+            }
+			/*,
 			setBaseURL: function() 
 			{
 				BaseUrl.getServiceUrl({ 
@@ -112,7 +113,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						widget.body.innerHTML += "<p>" + JSON.stringify(error) + "</p>";
 					}
 				});
-			}
+			}*/
 					
 		};
 
