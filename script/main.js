@@ -25,7 +25,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 				var headersep = widget.createElement('div', { 'class' : 'headersep'});
 				headersep.style= "font-size: 20px; color: #001100; text-align: center";
-				headersep.innerHTML = "<p> 	My first widget 3 </p>"
+				headersep.innerHTML = "<p> 	My first widget 4 </p>"
 				var testsep = widget.createElement('div', { 'class' : 'testsep', 'text' : 'My first' });
 				testsep.inject(widget.body);
 				headersep.inject(widget.body);
