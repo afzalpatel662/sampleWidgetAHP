@@ -6,6 +6,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 	
 			onLoad: function() { 
                 console.log("widget loaded");
+				/*
                 //widget.body.innerHTML = "Hello Afzal"
                 // Create a dropbox for drag-and-drop functionality
 				var dropbox = widget.createElement('div', { 'class' : 'mydropclass', 'text' : '' });
@@ -63,7 +64,95 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
                         
                     }
                 })
+				*/
 				
+				// Create form container
+				const formContainer = document.createElement('div');
+				formContainer.style.maxWidth = '400px';
+				formContainer.style.margin = 'auto';
+				formContainer.style.padding = '20px';
+				formContainer.style.border = '1px solid #ccc';
+				formContainer.style.borderRadius = '8px';
+				formContainer.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.1)';
+
+				// Create form
+				const form = document.createElement('form');
+				form.id = 'taskForm';
+
+				// Task Title Label
+				const taskTitleLabel = document.createElement('label');
+				taskTitleLabel.setAttribute('for', 'taskTitle');
+				taskTitleLabel.innerText = 'Task Title';
+				form.appendChild(taskTitleLabel);
+
+				// Task Title Input
+				const taskTitleInput = document.createElement('input');
+				taskTitleInput.type = 'text';
+				taskTitleInput.id = 'taskTitle';
+				taskTitleInput.name = 'taskTitle';
+				taskTitleInput.required = true;
+				taskTitleInput.style.width = '100%';
+				taskTitleInput.style.padding = '8px';
+				taskTitleInput.style.margin = '5px 0 15px';
+				taskTitleInput.style.borderRadius = '4px';
+				taskTitleInput.style.border = '1px solid #ccc';
+				form.appendChild(taskTitleInput);
+
+				// Task Description Label
+				const taskDescriptionLabel = document.createElement('label');
+				taskDescriptionLabel.setAttribute('for', 'taskDescription');
+				taskDescriptionLabel.innerText = 'Description';
+				form.appendChild(taskDescriptionLabel);
+
+				// Task Description Textarea
+				const taskDescriptionTextarea = document.createElement('textarea');
+				taskDescriptionTextarea.id = 'taskDescription';
+				taskDescriptionTextarea.name = 'taskDescription';
+				taskDescriptionTextarea.rows = 4;
+				taskDescriptionTextarea.required = true;
+				taskDescriptionTextarea.style.width = '100%';
+				taskDescriptionTextarea.style.padding = '8px';
+				taskDescriptionTextarea.style.margin = '5px 0 15px';
+				taskDescriptionTextarea.style.borderRadius = '4px';
+				taskDescriptionTextarea.style.border = '1px solid #ccc';
+				form.appendChild(taskDescriptionTextarea);
+
+				// Submit Button
+				const submitButton = document.createElement('button');
+				submitButton.type = 'submit';
+				submitButton.innerText = 'Submit';
+				submitButton.style.padding = '10px 15px';
+				submitButton.style.backgroundColor = '#4CAF50';
+				submitButton.style.color = 'white';
+				submitButton.style.border = 'none';
+				submitButton.style.borderRadius = '4px';
+				submitButton.style.cursor = 'pointer';
+				form.appendChild(submitButton);
+
+				// Append form to container
+				formContainer.appendChild(form);
+
+				// Append the form container to the body of the document
+				//document.body.appendChild(formContainer);
+				formContainer.inject(widget.body);
+
+				// Add event listener for form submission
+				form.addEventListener('submit', function(event) {
+					event.preventDefault(); // Prevent default form submission
+
+					const taskTitle = taskTitleInput.value;
+					const taskDescription = taskDescriptionTextarea.value;
+
+					// Display the input values in the console (or send them elsewhere)
+					console.log("Task Title:", taskTitle);
+					console.log("Task Description:", taskDescription);
+
+					// Optionally reset the form after submission
+					form.reset();
+				});
+
+
+
 				console.log("hello afzal 8");
 				comWidget.setBaseURL();
 				setTimeout(() => {
