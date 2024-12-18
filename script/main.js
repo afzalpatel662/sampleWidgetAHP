@@ -32,7 +32,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 				var formText = widget.createElement('div', { 'class' : 'form'});
 				formText.style= "font-size: 10px; color: #001100; text-align: left";
-				formText.innerHTML = "<p> 	Enter Title </p>";
+				formText.innerHTML = "Enter Title";
 
 				
 				var txtTitle = widget.createElement('input');
@@ -53,7 +53,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						alert("Button clicked");
 						
 					});
-
+				btnSubmit.inject(widget.body);
 				//
                 var theInput = widget.body.querySelector('.mydropclass');
 				DataDragAndDrop.droppable(theInput, {
