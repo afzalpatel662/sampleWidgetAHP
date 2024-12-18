@@ -112,6 +112,50 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						widget.body.innerHTML += "<p>" + JSON.stringify(error) + "</p>";
 					}
 				});
+			},
+
+			credentialDataParser:function(e){
+				var t,i,n;
+		
+				this.optionsList=[],this.defaultCollabSpace=null;
+		
+				var o=e.preferredcredentials;
+		
+				if(o.collabspace&&o.role&&o.organization){
+					var r=o.collabspace,s=o.role,a=o.organization,t=r.name,i=s.name,n=a.name;
+					this.defaultCollabSpace=i+"."+n+"."+t;
+				}
+				var l=e.collabspaces;
+				if(l&&l.length>0){
+					for(var c=!1,d=void 0,u=0;u<l.length;u++){
+						for(var p=(f=l[u]).couples||[],g=0;g<p.length;g++){
+							var m=p[g];
+							if(void 0===d&&(d=m.organization.name),d!==m.organization.name){
+								c=!0;
+								break
+							}
+						}
+						if(c)
+						break
+					}
+					for(u=0;u<l.length;u++){
+						var f,h=(f=l[u]).name,v=f.title;
+						for(p=f.couples,g=0;g<p.length;g++){
+							var C=p[g],b=C.organization,y=C.role,_=b.name,S=b.title,D=y.name,w=y.nls;
+							var I=D+"."+_+"."+h;
+							var A=c?v+" ● "+S+" ● "+w:v+" ● "+w;	
+							this.optionsList.push({label:A,value:I})
+						}
+					}
+				}
+				 
+				 widget.addPreference({
+					name: "SecurityContext",
+					type: "list",
+					label: "SecurityContext",
+					defaultValue: this.defaultCollabSpace,
+					options:this.optionsList
+				});
 			}
 					
 		};
