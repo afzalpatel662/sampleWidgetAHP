@@ -292,9 +292,10 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					ENO_CSRF_TOKEN: widget.getValue("csrfToken"),
 					//ENO_CSRF_TOKEN: "",
 					SecurityContext: widget.getValue("SecurityContext"),
-					Accept: "application/json",
-					'Content-Type': 'application/json'
+					"Accept-Language": "application/json"
 				};
+
+				console.log(headerWAF);
 				var methodWAF = "POST";
 				var urlObjWAF;
 				urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/tasks";
