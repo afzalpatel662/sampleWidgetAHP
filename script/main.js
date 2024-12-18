@@ -134,7 +134,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 				// Append the form container to the body of the document
 				//document.body.appendChild(formContainer);
-				formContainer.inject(widget.body);
+				//formContainer.inject(widget.body);
+				widget.body.appendChild(formContainer);
 
 				// Add event listener for form submission
 				form.addEventListener('submit', function(event) {
