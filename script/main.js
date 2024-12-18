@@ -65,7 +65,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
                     }
                 })
 				*/
-				
+				widget.body.innerHTML = "Sample widget to create Task"
 				// Create form container
 				const formContainer = document.createElement('div');
 				formContainer.style.maxWidth = '400px';
@@ -147,6 +147,20 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					// Display the input values in the console (or send them elsewhere)
 					console.log("Task Title:", taskTitle);
 					console.log("Task Description:", taskDescription);
+
+					let datajson = {"dataelements": {
+                			"title":"TEST_Widget_task",
+                			"state": "Assign",
+							"description": "created from AHP widget"
+							}
+						};
+
+						//console.log("datajson:: "+JSON.stringify(datajson));
+						let bStatus = comWidget.createTask(datajson);
+
+
+
+
 
 					// Optionally reset the form after submission
 					form.reset();
@@ -270,6 +284,43 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					defaultValue: this.defaultCollabSpace,
 					options:this.optionsList
 				});
+			},
+
+			createTask: function(objJSON) 
+			{
+				var headerWAF = {
+					ENO_CSRF_TOKEN: widget.getValue("csrfToken"),
+					//ENO_CSRF_TOKEN: "",
+					SecurityContext: widget.getValue("SecurityContext"),
+					Accept: "application/json",
+					'Content-Type': 'application/json'
+				};
+				var methodWAF = "POST";
+				var urlObjWAF;
+				urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/tasks";
+				
+				let dataRespTask = {};
+				let dataResp=WAFData.authenticatedRequest(urlObjWAF, {
+					method: methodWAF,
+					headers: headerWAF,
+					data: objJSON,
+					type: "json",
+					async : false,
+					onComplete: function(dataResp) {
+						dataRespTask=dataResp;
+						dataRespTask.status = true;
+						dataRespTask.output = dataResp;
+						console.log("task creation AHP widget ",dataRespTask);
+								
+					},
+					onFailure: function(error, backendresponse, response_hdrs) {
+						alert(backendresponse.message);
+						//console.log(backendresponse);
+						//console.log(response_hdrs);
+						widget.body.innerHTML += "<p>Something Went Wrong during task creation from AHP widget"+error+"</p>";
+					}
+				})
+				return dataRespTask;
 			}
 					
 		};
