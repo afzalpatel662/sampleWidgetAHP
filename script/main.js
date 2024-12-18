@@ -30,7 +30,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				testsep.inject(widget.body);
 				headersep.inject(widget.body);
 
-				const btnSubmit = document.createElement('input');
+				var btnSubmit = widget.createElement('input');
 					btnSubmit.type="button";
 					btnSubmit.value = 'Create Task';
 					btnSubmit.id="submit";
@@ -39,7 +39,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						alert("Button clicked");
 						
 					});
-					btnSubmit.inject(widget.body);
+				btnSubmit.inject(widget.body);
 
 
 				//
