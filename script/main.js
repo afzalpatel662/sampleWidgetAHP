@@ -30,6 +30,20 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				testsep.inject(widget.body);
 				headersep.inject(widget.body);
 
+				var formText = widget.createElement('div', { 'class' : 'form'});
+				formText.style= "font-size: 10px; color: #001100; text-align: left";
+				formText.innerHTML = "<p> 	Enter Title </p>";
+
+				
+				var txtTitle = widget.createElement('input');
+				txtTitle.type="text";
+				txtTitle.value="Title";
+				txtTitle.id="title";
+				
+
+				formText.append(txtTitle);
+				formText.inject(widget.body);
+
 				var btnSubmit = widget.createElement('input');
 					btnSubmit.type="button";
 					btnSubmit.value = 'Create Task';
@@ -39,8 +53,6 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						alert("Button clicked");
 						
 					});
-				btnSubmit.inject(widget.body);
-
 
 				//
                 var theInput = widget.body.querySelector('.mydropclass');
