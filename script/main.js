@@ -25,10 +25,22 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 				var headersep = widget.createElement('div', { 'class' : 'headersep'});
 				headersep.style= "font-size: 20px; color: #001100; text-align: center";
-				headersep.innerHTML = "<p> 	My first widget 5 </p>"
+				headersep.innerHTML = "<p> 	My first widget 6 </p>"
 				var testsep = widget.createElement('div', { 'class' : 'testsep', 'text' : 'My first' });
 				testsep.inject(widget.body);
 				headersep.inject(widget.body);
+
+				const btnSubmit = document.createElement('input');
+					btnSubmit.type="button";
+					btnSubmit.value = 'Create Task';
+					btnSubmit.id="submit";
+					btnSubmit.addEventListener('click', function (){				
+						//let bStatus = comWidget.createCI(datajson);
+						alert("Button clicked");
+						
+					});
+					btnSubmit.inject(widget.body);
+
 
 				//
                 var theInput = widget.body.querySelector('.mydropclass');
