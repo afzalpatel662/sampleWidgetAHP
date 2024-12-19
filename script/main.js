@@ -154,9 +154,15 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 							"description": "created from AHP widget"
 							}
 						};
+					
+					let routejson = {
+							"title": "AHP Created from Widget",
+      						"description": "engineering approval route "
+						};
 
 						//console.log("datajson:: "+JSON.stringify(datajson));
-						let bStatus = comWidget.createTask(datajson);
+						//let bStatus = comWidget.createTask(datajson);
+						let bStatus = comWidget.createTask(routejson);
 
 
 
@@ -298,12 +304,14 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				console.log(headerWAF);
 				var methodWAF = "POST";
 				var urlObjWAF;
-				urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/tasks";
+				//urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/tasks";
+				urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/dsrt/routes";
 				
 				let dataRespTask = {};
 				let dataResp=WAFData.authenticatedRequest(urlObjWAF, {
 					method: methodWAF,
 					headers: headerWAF,
+					//data: JSON.stringify(objJSON),
 					data: objJSON,
 					type: "json",
 					async : false,
