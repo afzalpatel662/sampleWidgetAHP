@@ -297,7 +297,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				var headerWAF = {
 					ENO_CSRF_TOKEN: widget.getValue("csrfToken"),
 					//ENO_CSRF_TOKEN: "",
-					SecurityContext: widget.getValue("SecurityContext"),
+					SecurityContext: widget.getValue("SecurityContext")
 					//"Accept-Language": "application/json"
 				};
 
