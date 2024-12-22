@@ -65,7 +65,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
                     }
                 })
 				*/
-				widget.body.innerHTML = "Sample widget to create Task 22"
+				widget.body.innerHTML = "Sample widget to create Task 4"
 				// Create form container
 				const formContainer = document.createElement('div');
 				formContainer.style.maxWidth = '400px';
@@ -297,7 +297,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				var headerWAF = {
 					ENO_CSRF_TOKEN: widget.getValue("csrfToken"),
 					//ENO_CSRF_TOKEN: "",
-					SecurityContext: widget.getValue("SecurityContext")
+					SecurityContext: widget.getValue("SecurityContext"),
+					"Content-Type": "application/json"
 					//"Accept-Language": "application/json"
 				};
 
