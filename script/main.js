@@ -65,7 +65,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
                     }
                 })
 				*/
-				widget.body.innerHTML = "Sample widget to create Task 4"
+				widget.body.innerHTML = "Sample widget to create Task 5"
 				// Create form container
 				const formContainer = document.createElement('div');
 				formContainer.style.maxWidth = '400px';
@@ -231,7 +231,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				let headerWAF = {
 				};
 				let methodWAF = "GET";
-				let dataResp=WAFData.authenticatedRequest(urlWAF, {
+				let dataResp=WAFData.proxifiedRequest(urlWAF, {
 					method: methodWAF,
 					headers: headerWAF,
 					data: dataWAF,
