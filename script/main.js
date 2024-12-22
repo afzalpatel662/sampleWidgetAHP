@@ -161,8 +161,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						};
 
 						//console.log("datajson:: "+JSON.stringify(datajson));
-						//let bStatus = comWidget.createTask(datajson);
-						let bStatus = comWidget.createTask(routejson);
+						let bStatus = comWidget.createTask(datajson);
+						//let bStatus = comWidget.createTask(routejson);
 
 
 
@@ -298,15 +298,14 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					ENO_CSRF_TOKEN: widget.getValue("csrfToken"),
 					//ENO_CSRF_TOKEN: "",
 					SecurityContext: widget.getValue("SecurityContext"),
-					"Content-Type": "application/json"
-					//"Accept-Language": "application/json"
+					"Accept-Language": "application/json"
 				};
 
 				console.log(headerWAF);
 				var methodWAF = "POST";
 				var urlObjWAF;
-				//urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/tasks";
-				urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/dsrt/routes";
+				urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/tasks";
+				//urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/dsrt/routes";
 				
 				let dataRespTask = {};
 				let dataResp=WAFData.authenticatedRequest(urlObjWAF, {
