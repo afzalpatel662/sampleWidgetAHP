@@ -319,7 +319,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						dataRespTask=dataResp;
 						dataRespTask.status = true;
 						dataRespTask.output = dataResp;
-						console.log("task creation AHP widget ",dataRespTask);
+						console.log("task creation AHP widget 2 ",dataRespTask);
 								
 					},
 					onFailure: function(error, backendresponse, response_hdrs) {
