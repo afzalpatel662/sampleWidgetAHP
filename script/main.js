@@ -65,7 +65,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
                     }
                 })
 				*/
-				widget.body.innerHTML = "Sample widget to create Task 3"
+				widget.body.innerHTML = "Sample widget to create Task 22"
 				// Create form container
 				const formContainer = document.createElement('div');
 				formContainer.style.maxWidth = '400px';
@@ -174,7 +174,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 
 
-				console.log("hello afzal 8");
+				console.log("hello afzal test 22");
 				comWidget.setBaseURL();
 				setTimeout(() => {
 					comWidget.setCSRF();
@@ -319,7 +319,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						dataRespTask=dataResp;
 						dataRespTask.status = true;
 						dataRespTask.output = dataResp;
-						console.log("task creation AHP widget 2 ",dataRespTask);
+						console.log("task creation AHP widget",dataRespTask);
 								
 					},
 					onFailure: function(error, backendresponse, response_hdrs) {
