@@ -79,43 +79,62 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				const form = document.createElement('form');
 				form.id = 'taskForm';
 
-				// Task Title Label
-				const taskTitleLabel = document.createElement('label');
-				taskTitleLabel.setAttribute('for', 'taskTitle');
-				taskTitleLabel.innerText = 'Task Title';
-				form.appendChild(taskTitleLabel);
+				// IP Class Title Label
+				const ipClassTitleLabel = document.createElement('label');
+				ipClassTitleLabel.setAttribute('for', 'ipClassTitle');
+				ipClassTitleLabel.innerText = 'Enter Title for IP Class';
+				form.appendChild(ipClassTitleLabel);
 
-				// Task Title Input
-				const taskTitleInput = document.createElement('input');
-				taskTitleInput.type = 'text';
-				taskTitleInput.id = 'taskTitle';
-				taskTitleInput.name = 'taskTitle';
-				taskTitleInput.required = true;
-				taskTitleInput.style.width = '100%';
-				taskTitleInput.style.padding = '8px';
-				taskTitleInput.style.margin = '5px 0 15px';
-				taskTitleInput.style.borderRadius = '4px';
-				taskTitleInput.style.border = '1px solid #ccc';
-				form.appendChild(taskTitleInput);
+				// IP Class Title Input
+				const ipClassTitleInput = document.createElement('input');
+				ipClassTitleInput.type = 'text';
+				ipClassTitleInput.id = 'ipClassTitle';
+				ipClassTitleInput.name = 'ipClassTitle';
+				ipClassTitleInput.required = true;
+				ipClassTitleInput.style.width = '100%';
+				ipClassTitleInput.style.padding = '8px';
+				ipClassTitleInput.style.margin = '5px 0 15px';
+				ipClassTitleInput.style.borderRadius = '4px';
+				ipClassTitleInput.style.border = '1px solid #ccc';
+				form.appendChild(ipClassTitleInput);
 
-				// Task Description Label
-				const taskDescriptionLabel = document.createElement('label');
-				taskDescriptionLabel.setAttribute('for', 'taskDescription');
-				taskDescriptionLabel.innerText = 'Description';
-				form.appendChild(taskDescriptionLabel);
+				// IP Class Description Label
+				const ipClassDescriptionLabel = document.createElement('label');
+				ipClassDescriptionLabel.setAttribute('for', 'ipClassDescription');
+				ipClassDescriptionLabel.innerText = 'Enter Description for IP Class';
+				form.appendChild(ipClassDescriptionLabel);
 
-				// Task Description Textarea
-				const taskDescriptionTextarea = document.createElement('textarea');
-				taskDescriptionTextarea.id = 'taskDescription';
-				taskDescriptionTextarea.name = 'taskDescription';
-				taskDescriptionTextarea.rows = 4;
-				taskDescriptionTextarea.required = true;
-				taskDescriptionTextarea.style.width = '100%';
-				taskDescriptionTextarea.style.padding = '8px';
-				taskDescriptionTextarea.style.margin = '5px 0 15px';
-				taskDescriptionTextarea.style.borderRadius = '4px';
-				taskDescriptionTextarea.style.border = '1px solid #ccc';
-				form.appendChild(taskDescriptionTextarea);
+				// IP Class Description Textarea
+				const ipClassDescriptionTextarea = document.createElement('textarea');
+				ipClassDescriptionTextarea.id = 'ipClassDescription';
+				ipClassDescriptionTextarea.name = 'ipClassDescription';
+				ipClassDescriptionTextarea.rows = 4;
+				ipClassDescriptionTextarea.required = true;
+				ipClassDescriptionTextarea.style.width = '100%';
+				ipClassDescriptionTextarea.style.padding = '8px';
+				ipClassDescriptionTextarea.style.margin = '5px 0 15px';
+				ipClassDescriptionTextarea.style.borderRadius = '4px';
+				ipClassDescriptionTextarea.style.border = '1px solid #ccc';
+				form.appendChild(ipClassDescriptionTextarea);
+
+				// Parent Class Label
+				const parentClassNameLabel = document.createElement('label');
+				parentClassNameLabel.setAttribute('for', 'parentClassName');
+				parentClassNameLabel.innerText = 'Enter parent IP Class/Library Name:';
+				form.appendChild(parentClassNameLabel);
+
+				// Parent Class Input
+				const parentClassNameInput = document.createElement('input');
+				parentClassNameInput.type = 'text';
+				parentClassNameInput.id = 'parentClassName';
+				parentClassNameInput.name = 'parentClassName';
+				parentClassNameInput.required = true;
+				parentClassNameInput.style.width = '100%';
+				parentClassNameInput.style.padding = '8px';
+				parentClassNameInput.style.margin = '5px 0 15px';
+				parentClassNameInput.style.borderRadius = '4px';
+				parentClassNameInput.style.border = '1px solid #ccc';
+				form.appendChild(parentClassNameInput);
 
 				// Submit Button
 				const submitButton = document.createElement('button');
@@ -141,12 +160,12 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				form.addEventListener('submit', function(event) {
 					event.preventDefault(); // Prevent default form submission
 
-					const taskTitle = taskTitleInput.value;
-					const taskDescription = taskDescriptionTextarea.value;
+					const ipClassTitle = ipClassTitleInput.value;
+					const ipClassDescription = ipClassDescriptionTextarea.value;
 
 					// Display the input values in the console (or send them elsewhere)
-					console.log("Task Title:", taskTitle);
-					console.log("Task Description:", taskDescription);
+					console.log("Task Title:", ipClassTitle);
+					console.log("Task Description:", ipClassDescription);
 
 					let datajson = {"dataelements": {
                 			"title":"TEST_Widget_task",
@@ -156,13 +175,18 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						};
 					
 					let routejson = {
-							"title": "AHP Created from Widget",
-      						"description": "engineering approval route "
-						};
+						"data": [
+						  {
+							"title": "AHP Created from Postman",
+							"description": "engineering approval route "
+							
+						  }
+						]
+					  };
 
 						//console.log("datajson:: "+JSON.stringify(datajson));
-						let bStatus = comWidget.createTask(datajson);
-						//let bStatus = comWidget.createTask(routejson);
+						//let bStatus = comWidget.createTask(datajson);
+						let bStatus = comWidget.createTask(routejson);
 
 
 
@@ -304,15 +328,15 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				console.log(headerWAF);
 				var methodWAF = "POST";
 				var urlObjWAF;
-				urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/tasks";
-				//urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/dsrt/routes";
+				//urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/tasks";
+				urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/dsrt/routes";
 				
 				let dataRespTask = {};
 				let dataResp=WAFData.proxifiedRequest(urlObjWAF, {
 					method: methodWAF,
 					headers: headerWAF,
-					//data: JSON.stringify(objJSON),
-					data: objJSON,
+					data: JSON.stringify(objJSON),
+					//data: objJSON,
 					type: "json",
 					async : false,
 					onComplete: function(dataResp) {
