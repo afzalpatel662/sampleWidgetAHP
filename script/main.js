@@ -358,7 +358,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/dsrt/routes";
 				console.log("urlObjWAF--"+urlObjWAF);
 				let dataRespTask = {};
-				let dataResp=WAFData.proxifiedRequest(urlObjWAF, {
+				let dataResp=WAFData.authenticatedRequest(urlObjWAF, {
 					method: methodWAF,
 					headers: headerWAF,
 					//data: JSON.stringify(objJSON),
