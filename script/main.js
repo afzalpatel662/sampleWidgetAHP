@@ -65,7 +65,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
                     }
                 })
 				*/
-				widget.body.innerHTML = "Sample widget to create Task 001"
+				widget.body.innerHTML = "Sample widget to create Task 002"
 				// Create form container
 				const formContainer = document.createElement('div');
 				formContainer.style.maxWidth = '400px';
@@ -356,13 +356,13 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				var urlObjWAF;
 				//urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/tasks";
 				urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/dsrt/routes";
-				
+				console.log("urlObjWAF--"+urlObjWAF);
 				let dataRespTask = {};
 				let dataResp=WAFData.proxifiedRequest(urlObjWAF, {
 					method: methodWAF,
 					headers: headerWAF,
-					data: JSON.stringify(objJSON),
-					//data: objJSON,
+					//data: JSON.stringify(objJSON),
+					data: objJSON,
 					type: "json",
 					async : false,
 					onComplete: function(dataResp) {
