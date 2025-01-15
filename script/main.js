@@ -168,7 +168,13 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					console.log("IP Class Title:", ipClassTitle);
 					console.log("IP Class Description:", ipClassDescription);
 					console.log("IP Class Link:", ipClassParentLink);
-				
+
+					const decodedUrl = decodeURIComponent(ipClassParentLink);
+					console.log("decodedUrl:", decodedUrl);
+					const startIndex = decodedUrl.indexOf("objectId") + 9;
+					const endIndex = decodedUrl.indexOf("\"", startIndex);
+					const physicalId = decodedUrl.substring(startIndex, endIndex);
+					console.log("physicalId:", physicalId);
 
 					let datajson = {"dataelements": {
                 			"title":"TEST_Widget_task",
