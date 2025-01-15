@@ -65,7 +65,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
                     }
                 })
 				*/
-				widget.body.innerHTML = "Sample widget to create Task 6"
+				widget.body.innerHTML = "Sample widget to create Task 7"
 				// Create form container
 				const formContainer = document.createElement('div');
 				formContainer.style.maxWidth = '400px';
@@ -118,23 +118,23 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				form.appendChild(ipClassDescriptionTextarea);
 
 				// Parent Class Label
-				const parentClassNameLabel = document.createElement('label');
-				parentClassNameLabel.setAttribute('for', 'parentClassName');
-				parentClassNameLabel.innerText = 'Enter parent IP Class/Library Name:';
-				form.appendChild(parentClassNameLabel);
+				const parentClassLinkLabel = document.createElement('label');
+				parentClassLinkLabel.setAttribute('for', 'parentClassName');
+				parentClassLinkLabel.innerText = 'Enter Link of parent IP Class/Library where you want to create IP Class:';
+				form.appendChild(parentClassLinkLabel);
 
 				// Parent Class Input
-				const parentClassNameInput = document.createElement('input');
-				parentClassNameInput.type = 'text';
-				parentClassNameInput.id = 'parentClassName';
-				parentClassNameInput.name = 'parentClassName';
-				parentClassNameInput.required = true;
-				parentClassNameInput.style.width = '100%';
-				parentClassNameInput.style.padding = '8px';
-				parentClassNameInput.style.margin = '5px 0 15px';
-				parentClassNameInput.style.borderRadius = '4px';
-				parentClassNameInput.style.border = '1px solid #ccc';
-				form.appendChild(parentClassNameInput);
+				const parentClassLinkInput = document.createElement('input');
+				parentClassLinkInput.type = 'text';
+				parentClassLinkInput.id = 'parentClassID';
+				parentClassLinkInput.name = 'parentClassID';
+				parentClassLinkInput.required = true;
+				parentClassLinkInput.style.width = '100%';
+				parentClassLinkInput.style.padding = '8px';
+				parentClassLinkInput.style.margin = '5px 0 15px';
+				parentClassLinkInput.style.borderRadius = '4px';
+				parentClassLinkInput.style.border = '1px solid #ccc';
+				form.appendChild(parentClassLinkInput);
 
 				// Submit Button
 				const submitButton = document.createElement('button');
@@ -162,10 +162,13 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 					const ipClassTitle = ipClassTitleInput.value;
 					const ipClassDescription = ipClassDescriptionTextarea.value;
+					const ipClassParentLink = parentClassLinkInput.value;
 
 					// Display the input values in the console (or send them elsewhere)
-					console.log("Task Title:", ipClassTitle);
-					console.log("Task Description:", ipClassDescription);
+					console.log("IP Class Title:", ipClassTitle);
+					console.log("IP Class Description:", ipClassDescription);
+					console.log("IP Class Link:", ipClassParentLink);
+				
 
 					let datajson = {"dataelements": {
                 			"title":"TEST_Widget_task",
