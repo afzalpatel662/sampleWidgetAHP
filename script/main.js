@@ -65,7 +65,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
                     }
                 })
 				*/
-				widget.body.innerHTML = "Sample widget to create Task 7"
+				widget.body.innerHTML = "Sample widget to create Task 8"
 				// Create form container
 				const formContainer = document.createElement('div');
 				formContainer.style.maxWidth = '400px';
@@ -173,6 +173,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					console.log("decodedUrl:", decodedUrl);
 					const startIndex = decodedUrl.indexOf("objectId") + 9;
 					const endIndex = decodedUrl.indexOf("\"", startIndex);
+					console.log("startIndex:", startIndex);
+					console.log("endIndex:", endIndex);
 					const physicalId = decodedUrl.substring(startIndex, endIndex);
 					console.log("physicalId:", physicalId);
 
