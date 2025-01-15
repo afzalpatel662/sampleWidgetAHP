@@ -65,7 +65,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
                     }
                 })
 				*/
-				widget.body.innerHTML = "Sample widget to create Task 002"
+				widget.body.innerHTML = "Sample widget to create Task 003"
 				// Create form container
 				const formContainer = document.createElement('div');
 				formContainer.style.maxWidth = '400px';
@@ -190,7 +190,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						"data": [
 						  {
 							"title": "TEST POC APPROVAL ROUTE",
-							"description": "test postman approval route",
+							"description": "test widget approval route",
 							"routeBasePurpose": "Approval",
 							"AutoStopOnRejection": "Immediate",
 							"routeCompletionAction": "Notify Route Owner",
@@ -361,8 +361,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				let dataResp=WAFData.authenticatedRequest(urlObjWAF, {
 					method: methodWAF,
 					headers: headerWAF,
-					//data: JSON.stringify(objJSON),
-					data: objJSON,
+					data: JSON.stringify(objJSON),
+					//data: objJSON,
 					type: "json",
 					async : false,
 					onComplete: function(dataResp) {
