@@ -189,9 +189,22 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					let routejson = {
 						"data": [
 						  {
-							"title": "AHP Created from Postman",
-							"description": "engineering approval route "
-							
+							"title": "TEST POC APPROVAL ROUTE",
+							"description": "test postman approval route",
+							"routeBasePurpose": "Approval",
+							"AutoStopOnRejection": "Immediate",
+							"routeCompletionAction": "Notify Route Owner",
+							"tasks": [
+							  {
+								"allowDelegation": "TRUE",
+								"assigneeSetDueDate": "Yes",
+								"instructions": "Requesting approval for IP Class creation",
+								"taskAction": "Approve",
+								"taskOrder": "1",
+								"title": "IPClassCreation_549E9356A4C80100676A99770004E192_Variant Test AHP_Created from postman",
+								"taskAssigneeUsername": "apatel55"
+							  }
+							]
 						  }
 						]
 					  };
@@ -331,10 +344,11 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 			createTask: function(objJSON) 
 			{
 				var headerWAF = {
-					ENO_CSRF_TOKEN: widget.getValue("csrfToken"),
+					"ENO_CSRF_TOKEN" : widget.getValue("csrfToken"),
 					//ENO_CSRF_TOKEN: "",
-					SecurityContext: widget.getValue("SecurityContext"),
-					"Accept-Language": "application/json"
+					"SecurityContext" : widget.getValue("SecurityContext"),
+					"Accept-Language": "application/json",
+					"Content-Type" : "application/json"
 				};
 
 				console.log(headerWAF);
