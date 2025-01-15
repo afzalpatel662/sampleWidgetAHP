@@ -171,7 +171,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 					const decodedUrl = decodeURIComponent(ipClassParentLink);
 					console.log("decodedUrl:", decodedUrl);
-					const startIndex = decodedUrl.indexOf("objectId") + 9;
+					const startIndex = decodedUrl.indexOf("objectId") + 10;
 					const endIndex = decodedUrl.indexOf("\"", startIndex);
 					console.log("startIndex:", startIndex);
 					console.log("endIndex:", endIndex);
