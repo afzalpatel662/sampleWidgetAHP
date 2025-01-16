@@ -65,7 +65,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
                     }
                 })
 				*/
-				widget.body.innerHTML = "Sample widget to create Task 003"
+				widget.body.innerHTML = "Sample widget to create Task 004"
 				// Create form container
 				const formContainer = document.createElement('div');
 				formContainer.style.maxWidth = '400px';
@@ -175,9 +175,11 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					const endIndex = decodedUrl.indexOf("\"", startIndex);
 					console.log("startIndex:", startIndex);
 					console.log("endIndex:", endIndex);
-					const physicalId = decodedUrl.substring(startIndex, endIndex);
-					console.log("physicalId:", physicalId);
+					const parentPhysicalId = decodedUrl.substring(startIndex, endIndex);
+					console.log("parentPhysicalId:", parentPhysicalId);
 					
+					const dataTitle = "IPClassCreation_" + parentPhysicalId + "_" + ipClassTitle + "_" + ipClassDescription;
+					let taskApprover = "apatel55";
 
 					let datajson = {"dataelements": {
                 			"title":"TEST_Widget_task",
@@ -189,8 +191,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					let routejson = {
 						"data": [
 						  {
-							"title": "TEST POC APPROVAL ROUTE",
-							"description": "test widget approval route",
+							"title": "Approval Route for IP Class creation",
+							"description": "Approval Route for IP Class creation",
 							"routeBasePurpose": "Approval",
 							"AutoStopOnRejection": "Immediate",
 							"routeCompletionAction": "Notify Route Owner",
@@ -198,11 +200,11 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 							  {
 								"allowDelegation": "TRUE",
 								"assigneeSetDueDate": "Yes",
-								"instructions": "Requesting approval for IP Class creation",
+								"instructions": "Requesting your approval for IP Class creation",
 								"taskAction": "Approve",
 								"taskOrder": "1",
-								"title": "IPClassCreation_549E9356A4C80100676A99770004E192_Variant Test AHP_Created from postman",
-								"taskAssigneeUsername": "apatel55"
+								"title": dataTitle,
+								"taskAssigneeUsername": taskApprover
 							  }
 							]
 						  }
@@ -212,7 +214,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						//console.log("datajson:: "+JSON.stringify(datajson));
 						//let bStatus = comWidget.createTask(datajson);
 						let bStatus = comWidget.createTask(routejson);
-
+					  	console.log("bStatus---"+bStatus);
 
 
 
@@ -378,6 +380,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						//console.log(response_hdrs);
 						widget.body.innerHTML += "<p>Something Went Wrong during task creation from AHP widget"+error+"</p>";
 					}
+
+
 				})
 				return dataRespTask;
 			}
