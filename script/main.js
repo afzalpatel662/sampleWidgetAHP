@@ -6,66 +6,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 	
 			onLoad: function() { 
                 console.log("widget loaded");
-				/*
-                //widget.body.innerHTML = "Hello Afzal"
-                // Create a dropbox for drag-and-drop functionality
-				var dropbox = widget.createElement('div', { 'class' : 'mydropclass', 'text' : '' });
-				//var dropimage = widget.createElement('img', { 'src': 'https://krishnaprasadarisetty.github.io/SLK_Boss_ATT/BO_ATT/Images/dropImage.png', 'alt': 'Dropbox Image' });
-				//dropbox.append(dropimage);
-				var dropboxsep = widget.createElement('div', { 'class' : 'dropboxsep', 'text' : '--- or ---' });
-				dropboxsep.style= "font-size: 12px; color: #d5e8f2; text-align: center";
-				dropbox.append(dropboxsep);
-				//var button = document.createElement('button', {'class':'dynamic-button'});
-
-				//button.style = "padding: 10px 20px; font-size: 14px; text-align: center; margin: 10px; background-color: #368ec4; color: white; border: none; cursor: pointer";
-				//button.innerHTML = 'Open content';
-				//dropbox.append(button);
-				dropbox.style = "border:2px #c6c5c5 dashed; margin:10px; padding: 5%; text-align: center";
-				widget.body.innerHTML="";
-				dropbox.inject(widget.body);
-
-				var headersep = widget.createElement('div', { 'class' : 'headersep'});
-				headersep.style= "font-size: 20px; color: #001100; text-align: center";
-				headersep.innerHTML = "<p> 	My first widget 6 </p>"
-				var testsep = widget.createElement('div', { 'class' : 'testsep', 'text' : 'My first' });
-				testsep.inject(widget.body);
-				headersep.inject(widget.body);
-
-				var formText = widget.createElement('div', { 'class' : 'form'});
-				formText.style= "font-size: 10px; color: #001100; text-align: left";
-				formText.innerHTML = "Enter Title";
-
-				
-				var txtTitle = widget.createElement('input');
-				txtTitle.type="text";
-				txtTitle.value="Title";
-				txtTitle.id="title";
-				
-
-				formText.append(txtTitle);
-				formText.inject(widget.body);
-
-				var btnSubmit = widget.createElement('input');
-					btnSubmit.type="button";
-					btnSubmit.value = 'Create Task';
-					btnSubmit.id="submit";
-					btnSubmit.addEventListener('click', function (){				
-						//let bStatus = comWidget.createCI(datajson);
-						alert("Button clicked");
-						
-					});
-				btnSubmit.inject(widget.body);
-				//
-                var theInput = widget.body.querySelector('.mydropclass');
-				DataDragAndDrop.droppable(theInput, {
-					drop: function(input) {
-                        alert(input);
-						alert("test");
-                        
-                    }
-                })
-				*/
-				widget.body.innerHTML = "Sample widget to create Task 004"
+				widget.body.innerHTML = "Please fill the form to request creation of IP Classification folder:"
 				// Create form container
 				const formContainer = document.createElement('div');
 				formContainer.style.maxWidth = '400px';
@@ -117,13 +58,13 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				ipClassDescriptionTextarea.style.border = '1px solid #ccc';
 				form.appendChild(ipClassDescriptionTextarea);
 
-				// Parent Class Label
+				// Parent Class Link Label
 				const parentClassLinkLabel = document.createElement('label');
 				parentClassLinkLabel.setAttribute('for', 'parentClassName');
-				parentClassLinkLabel.innerText = 'Enter Link of parent IP Class/Library where you want to create IP Class:';
+				parentClassLinkLabel.innerText = 'Enter Link of parent IP Classification/Library folder under which you need to create new folder:';
 				form.appendChild(parentClassLinkLabel);
 
-				// Parent Class Input
+				// Parent Class Link Input
 				const parentClassLinkInput = document.createElement('input');
 				parentClassLinkInput.type = 'text';
 				parentClassLinkInput.id = 'parentClassID';
@@ -152,8 +93,6 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				formContainer.appendChild(form);
 
 				// Append the form container to the body of the document
-				//document.body.appendChild(formContainer);
-				//formContainer.inject(widget.body);
 				widget.body.appendChild(formContainer);
 
 				// Add event listener for form submission
@@ -169,25 +108,17 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					console.log("IP Class Description:", ipClassDescription);
 					console.log("IP Class Link:", ipClassParentLink);
 
+					//Get physical id of parent folder from link
 					const decodedUrl = decodeURIComponent(ipClassParentLink);
-					console.log("decodedUrl:", decodedUrl);
 					const startIndex = decodedUrl.indexOf("objectId") + 11;
 					const endIndex = decodedUrl.indexOf("\"", startIndex);
-					console.log("startIndex:", startIndex);
-					console.log("endIndex:", endIndex);
 					const parentPhysicalId = decodedUrl.substring(startIndex, endIndex);
 					console.log("parentPhysicalId:", parentPhysicalId);
 					
 					const dataTitle = "IPClassCreation_" + parentPhysicalId + "_" + ipClassTitle + "_" + ipClassDescription;
+					//adding task approver - to be added in config file later
 					let taskApprover = "apatel55";
-
-					let datajson = {"dataelements": {
-                			"title":"TEST_Widget_task",
-                			"state": "Assign",
-							"description": "created from AHP widget"
-							}
-						};
-					
+										
 					let routejson = {
 						"data": [
 						  {
@@ -210,31 +141,23 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						  }
 						]
 					  };
-
-						//console.log("datajson:: "+JSON.stringify(datajson));
-						//let bStatus = comWidget.createTask(datajson);
+					
+					//method to create route
 						let bStatus = comWidget.createTask(routejson);
 						let bRouteCreationStatus = JSON.stringify(bStatus.status);
 					  	console.log("bStatus---"+bRouteCreationStatus);
 
-						if(bRouteCreationStatus)
-						{
-							const routePId = bStatus.data[0].id;
-							console.log("route pid"+routePId);
-							let bStartRoute = comWidget.startRoute(routePId);
-						}
-
-						
-
-
-
+					// Start route after creation
+					if(bRouteCreationStatus)
+					{
+						const routePId = bStatus.data[0].id;
+						console.log("route pid"+routePId);
+						let bStartRoute = comWidget.startRoute(routePId);
+					}
 					// Optionally reset the form after submission
 					form.reset();
 				});
 
-
-
-				console.log("hello afzal test 22");
 				comWidget.setBaseURL();
 				setTimeout(() => {
 					comWidget.setCSRF();
@@ -356,16 +279,12 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 			{
 				var headerWAF = {
 					"ENO_CSRF_TOKEN" : widget.getValue("csrfToken"),
-					//ENO_CSRF_TOKEN: "",
 					"SecurityContext" : widget.getValue("SecurityContext"),
 					"Accept-Language": "application/json",
 					"Content-Type" : "application/json"
 				};
-
-				console.log(headerWAF);
 				var methodWAF = "POST";
 				var urlObjWAF;
-				//urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/tasks";
 				urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/dsrt/routes";
 				console.log("urlObjWAF--"+urlObjWAF);
 				let dataRespTask = {};
@@ -379,7 +298,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					onComplete: function(dataResp) {
 						dataRespTask=dataResp;
 						dataRespTask.status = true;
-						console.log("task creation AHP widget"+JSON.stringify(dataRespTask));
+						console.log("Created Route"+JSON.stringify(dataRespTask));
 						const routePId = dataRespTask.data[0].id;
 						console.log("route pid"+routePId);
 								
@@ -390,8 +309,6 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						//console.log(response_hdrs);
 						widget.body.innerHTML += "<p>Something Went Wrong during task creation from AHP widget"+error+"</p>";
 					}
-
-
 				})
 				return dataRespTask;
 			},
@@ -405,8 +322,6 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					"Accept-Language": "application/json",
 					"Content-Type" : "application/json"
 				};
-
-				console.log(headerWAF);
 				var methodWAF = "POST";
 				var urlObjWAF;
 				urlObjWAF = widget.getValue("urlBASE") +"/resources/v1/modeler/dsrt/routes/" + routePID + "/start";
@@ -425,12 +340,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					},
 					onFailure: function(error, backendresponse, response_hdrs) {
 						alert(backendresponse.message);
-						//console.log(backendresponse);
-						//console.log(response_hdrs);
 						widget.body.innerHTML += "<p>Something Went Wrong during starting route"+error+"</p>";
 					}
-
-
 				})
 				return dataRespRouteStart;
 			}
