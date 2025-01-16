@@ -214,8 +214,17 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						//console.log("datajson:: "+JSON.stringify(datajson));
 						//let bStatus = comWidget.createTask(datajson);
 						let bStatus = comWidget.createTask(routejson);
-					  	console.log("bStatus---"+bStatus);
+						let bRouteCreationStatus = JSON.stringify(bStatus.status);
+					  	console.log("bStatus---"+bRouteCreationStatus);
 
+						if(bRouteCreationStatus)
+						{
+							const routePId = bStatus.data[0].id;
+							console.log("route pid"+routePId);
+							let bStartRoute = comWidget.startRoute(routePId);
+						}
+
+						
 
 
 
@@ -370,8 +379,9 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					onComplete: function(dataResp) {
 						dataRespTask=dataResp;
 						dataRespTask.status = true;
-						dataRespTask.output = dataResp;
-						console.log("task creation AHP widget",dataRespTask);
+						console.log("task creation AHP widget"+JSON.stringify(dataRespTask));
+						const routePId = dataRespTask.data[0].id;
+						console.log("route pid"+routePId);
 								
 					},
 					onFailure: function(error, backendresponse, response_hdrs) {
@@ -384,6 +394,45 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 				})
 				return dataRespTask;
+			},
+
+			startRoute: function(routePID) 
+			{
+				var headerWAF = {
+					"ENO_CSRF_TOKEN" : widget.getValue("csrfToken"),
+					//ENO_CSRF_TOKEN: "",
+					"SecurityContext" : widget.getValue("SecurityContext"),
+					"Accept-Language": "application/json",
+					"Content-Type" : "application/json"
+				};
+
+				console.log(headerWAF);
+				var methodWAF = "POST";
+				var urlObjWAF;
+				urlObjWAF = widget.getValue("urlBASE") +"/resources/v1/modeler/dsrt/routes/" + routePID + "/start";
+				console.log("urlObjWAF--"+urlObjWAF);
+				let dataRespRouteStart = {};
+				let dataResp=WAFData.authenticatedRequest(urlObjWAF, {
+					method: methodWAF,
+					headers: headerWAF,
+					data: "",
+					type: "json",
+					async : false,
+					onComplete: function(dataResp) {
+						dataRespRouteStart=dataResp;
+						dataRespRouteStart.status = true;
+						console.log("Route Started"+JSON.stringify(dataRespRouteStart));								
+					},
+					onFailure: function(error, backendresponse, response_hdrs) {
+						alert(backendresponse.message);
+						//console.log(backendresponse);
+						//console.log(response_hdrs);
+						widget.body.innerHTML += "<p>Something Went Wrong during starting route"+error+"</p>";
+					}
+
+
+				})
+				return dataRespRouteStart;
 			}
 					
 		};
