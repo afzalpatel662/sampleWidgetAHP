@@ -287,7 +287,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						}
 					}
 				}
-				 
+				
 				 widget.addPreference({
 					name: "SecurityContext",
 					type: "list",
@@ -306,7 +306,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					"Accept-Language": "application/json",
 					"Content-Type" : "application/json"
 				};
-				console.log("headerWAF---"+headerWAF);
+				console.log("headerWAF---"+JSON.stringify(headerWAF));
 				var methodWAF = "POST";
 				var urlObjWAF;
 				urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/dsrt/routes";
@@ -329,6 +329,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					},
 					onFailure: function(error, backendresponse, response_hdrs) {
 						alert(backendresponse.message);
+						alert("Please check credentials");
 						//console.log(backendresponse);
 						//console.log(response_hdrs);
 						widget.body.innerHTML += "<p>Something Went Wrong during task creation from AHP widget"+error+"</p>";
