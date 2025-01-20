@@ -299,12 +299,14 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 			createTask: function(objJSON) 
 			{
+				console.log("widget.getValue for security context---"+widget.getValue("SecurityContext"));
 				var headerWAF = {
 					"ENO_CSRF_TOKEN" : widget.getValue("csrfToken"),
 					"SecurityContext" : widget.getValue("SecurityContext"),
 					"Accept-Language": "application/json",
 					"Content-Type" : "application/json"
 				};
+				console.log("headerWAF---"+headerWAF);
 				var methodWAF = "POST";
 				var urlObjWAF;
 				urlObjWAF = widget.getValue("urlBASE")+"resources/v1/modeler/dsrt/routes";
