@@ -299,7 +299,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 			createTask: function(objJSON) 
 			{
-				console.log("widget.getValue for security context---"+widget.getValue("SecurityContext"));
+				let iSecurityContext = widget.getValue("SecurityContext");
+				console.log("widget.getValue for security context---"+iSecurityContext);
 				var headerWAF = {
 					"ENO_CSRF_TOKEN" : widget.getValue("csrfToken"),
 					"SecurityContext" : widget.getValue("SecurityContext"),
@@ -328,11 +329,18 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 								
 					},
 					onFailure: function(error, backendresponse, response_hdrs) {
-						alert(backendresponse.message);
-						alert("Please check credentials");
+						//alert(backendresponse.message);
+						if(iSecurityContext=="" || iSecurityContext==null)
+						{
+							alert("Please select proper credentials in perferences");
+						}
+						else
+						{
+							alert("Something went wrong during form submission");
+						}						
 						//console.log(backendresponse);
 						//console.log(response_hdrs);
-						widget.body.innerHTML += "<p>Something Went Wrong during task creation from AHP widget"+error+"</p>";
+						//widget.body.innerHTML += "<p>Something Went Wrong during task creation from AHP widget"+error+"</p>";
 					}
 				})
 				return dataRespTask;
