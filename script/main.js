@@ -343,10 +343,16 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 			startRoute: function(routePID) 
 			{
+				let iSecurityContext = widget.getValue("SecurityContext");
+				if(iSecurityContext=="" || iSecurityContext==null)
+				{
+					iSecurityContext=sDefaultContext;
+				}
+
 				var headerWAF = {
 					"ENO_CSRF_TOKEN" : widget.getValue("csrfToken"),
 					//ENO_CSRF_TOKEN: "",
-					"SecurityContext" : widget.getValue("SecurityContext"),
+					"SecurityContext" : iSecurityContext,
 					"Accept-Language": "application/json",
 					"Content-Type" : "application/json"
 				};
