@@ -276,7 +276,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					}
 				}
 				const defaultValue = this.defaultCollabSpace;
-				console.log("defaultValue---"+defaultValue);
+				console.log("defaultValue 2---"+defaultValue);
 				 widget.addPreference({
 					name: "SecurityContext",
 					type: "list",
