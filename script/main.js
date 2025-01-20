@@ -94,6 +94,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 				// Append the form container to the body of the document
 				widget.body.appendChild(formContainer);
+				let sDefaultContext = "";
 
 				// Add event listener for form submission
 				form.addEventListener('submit', function(event) {
@@ -222,7 +223,10 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					async : false,
 					onComplete: function(dataResp) {
 						console.log("security context is---"+dataResp);
-						comWidget.credentialDataParser(dataResp);
+						setTimeout(() => {
+							comWidget.credentialDataParser(dataResp);
+						}, 1000);
+						
 					},
 					onFailure: function(error) {
 						widget.body.innerHTML += "<p>Something Went Wrong- "+error+"</p>";
