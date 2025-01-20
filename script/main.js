@@ -223,10 +223,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					async : false,
 					onComplete: function(dataResp) {
 						console.log("security context is---"+dataResp);
-						setTimeout(() => {
-							comWidget.credentialDataParser(dataResp);
-						}, 1000);
-						
+						comWidget.credentialDataParser(dataResp);
 					},
 					onFailure: function(error) {
 						widget.body.innerHTML += "<p>Something Went Wrong- "+error+"</p>";
@@ -276,7 +273,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					}
 				}
 				const defaultValue = this.defaultCollabSpace;
-				console.log("defaultValue 2---"+defaultValue);
+				sDefaultContext = defaultValue;
+				console.log("defaultValue---"+defaultValue);
 				 widget.addPreference({
 					name: "SecurityContext",
 					type: "list",
@@ -290,9 +288,18 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 			{
 				let iSecurityContext = widget.getValue("SecurityContext");
 				console.log("widget.getValue for security context---"+iSecurityContext);
+				console.log("sDefaultContext---"+sDefaultContext);
+				if(iSecurityContext=="" || iSecurityContext==null)
+				{
+					console.log("Default value was empty");
+					iSecurityContext=sDefaultContext;
+				}
+
+
+
 				var headerWAF = {
 					"ENO_CSRF_TOKEN" : widget.getValue("csrfToken"),
-					"SecurityContext" : widget.getValue("SecurityContext"),
+					"SecurityContext" : iSecurityContext,
 					"Accept-Language": "application/json",
 					"Content-Type" : "application/json"
 				};
