@@ -272,11 +272,12 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					}
 				}
 				let sDefaultSecurityContext = JSON.stringify(this.defaultCollabSpace);
+				console.log("sDefaultSecurityContext---"+sDefaultSecurityContext);
 				 widget.addPreference({
 					name: "SecurityContext",
 					type: "list",
 					label: "SecurityContext",
-					defaultValue: sDefaultSecurityContext,
+					defaultValue: this.defaultCollabSpace,
 					options:this.optionsList
 				});
 			},
