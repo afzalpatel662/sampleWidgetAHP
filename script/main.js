@@ -232,17 +232,27 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 			},
 
 			credentialDataParser:function(e){
+				console.log("e-(dataresp)--"+e);
 				var t,i,n;
 		
 				this.optionsList=[],this.defaultCollabSpace=null;
 		
 				var o=e.preferredcredentials;
+				console.log("o-(preferred creentials)--"+o);
 		
 				if(o.collabspace&&o.role&&o.organization){
 					var r=o.collabspace,s=o.role,a=o.organization,t=r.name,i=s.name,n=a.name;
+					console.log("r--(preferred creentials collab space)----"+r);
+					console.log("s---(preferred creentials role)----"+s);
+					console.log("a---(preferred creentials org)----"+a);
+					console.log("t---"+t);
+					console.log("i---"+i);
+					console.log("n---"+n);
 					this.defaultCollabSpace=i+"."+n+"."+t;
+					console.log("this.defaultCollabSpace---"+this.defaultCollabSpace);
 				}
 				var l=e.collabspaces;
+				console.log("l---"+l);
 				if(l&&l.length>0){
 					for(var c=!1,d=void 0,u=0;u<l.length;u++){
 						for(var p=(f=l[u]).couples||[],g=0;g<p.length;g++){
@@ -257,10 +267,22 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					}
 					for(u=0;u<l.length;u++){
 						var f,h=(f=l[u]).name,v=f.title;
+						console.log("f---"+f);
+						console.log("h---"+h);
+						console.log("v---"+v);
 						for(p=f.couples,g=0;g<p.length;g++){
 							var C=p[g],b=C.organization,y=C.role,_=b.name,S=b.title,D=y.name,w=y.nls;
 							var I=D+"."+_+"."+h;
-							var A=c?v+" ● "+S+" ● "+w:v+" ● "+w;	
+							var A=c?v+" ● "+S+" ● "+w:v+" ● "+w;
+							console.log("C---"+C);
+							console.log("b---"+b);
+							console.log("y---"+y);
+							console.log("_---"+_);
+							console.log("S---"+S);
+							console.log("D---"+D);
+							console.log("w---"+w);
+							console.log("I---"+I);
+							console.log("A---"+A);
 							this.optionsList.push({label:A,value:I})
 						}
 					}
