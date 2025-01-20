@@ -246,7 +246,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					console.log("s---(preferred creentials role)----"+JSON.stringify(s));
 					console.log("a---(preferred creentials org)----"+JSON.stringify(a));
 					this.defaultCollabSpace=i+"."+n+"."+t;
-					console.log("this.defaultCollabSpace---"+this.defaultCollabSpace);
+					console.log("this.defaultCollabSpace 1---"+this.defaultCollabSpace);
 				}
 				var l=e.collabspaces;
 				if(l&&l.length>0){
@@ -271,13 +271,13 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						}
 					}
 				}
-				let sDefaultSecurityContext = JSON.stringify(this.defaultCollabSpace);
-				console.log("sDefaultSecurityContext---"+sDefaultSecurityContext);
+				const defaultValue = this.defaultCollabSpace;
+				console.log("defaultValue---"+defaultValue);
 				 widget.addPreference({
 					name: "SecurityContext",
 					type: "list",
 					label: "SecurityContext",
-					defaultValue: this.defaultCollabSpace,
+					defaultValue: defaultValue,
 					options:this.optionsList
 				});
 			},
