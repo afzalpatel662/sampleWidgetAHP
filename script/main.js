@@ -287,7 +287,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 			createTask: function(objJSON) 
 			{
 				let iSecurityContext = widget.getValue("SecurityContext");
-				console.log("widget.getValue for security context---"+iSecurityContext);
+				console.log("widget.getValue for SC---"+iSecurityContext);
 				console.log("sDefaultContext---"+sDefaultContext);
 				if(iSecurityContext=="" || iSecurityContext==null)
 				{
