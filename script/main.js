@@ -316,7 +316,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					onFailure: function(error, backendresponse, response_hdrs) {
 						if(iSecurityContext=="" || iSecurityContext==null)
 						{
-							alert("Please select proper credentials in perferences");
+							alert("Please select and save proper credentials in perferences tab");
 						}
 						else
 						{
